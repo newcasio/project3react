@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
-import Heading from './Heading';
-import Search from './Search';
+import Heading from '../parts/Heading';
+import Search from '../parts/Search';
 
 
 

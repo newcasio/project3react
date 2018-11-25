@@ -42,6 +42,7 @@ class CreateUser extends Component{
   render(){
     return(
       <div>
+        <h3>Register here</h3>
         <form onSubmit={(e)=>this.SubmitNewUser(e)}>  {/*auto call getBookResults on search button click*/}
           <label>Email</label>
           {/*input field, when typing calls handleChange method and changes state*/}

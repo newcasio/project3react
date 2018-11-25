@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Heading from './Heading';
+import Heading from '../parts/Heading';
 
 
 class Book extends Component{

@@ -1,10 +1,10 @@
 import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 
-import Home from "./components/Home";
-import Book from "./components/Book";
-import User from "./components/User";
-import CreateUser from "./components/CreateUser";
+import Home from "./components/pages/Home";
+import Book from "./components/pages/Book";
+import User from "./components/pages/User";
+import CreateUser from "./components/pages/CreateUser";
 
 
 const Routes = (
@@ -13,7 +13,7 @@ const Routes = (
       {/*Map a URL route to a component, which will be rendered when that url is request*/}
       <Route exact path="/" component={ Home } />
       <Route exact path="/book/:id" component={ Book } />
-      <Route exact path="/user/:id" component={ User } />
+      <Route exact path="/user/:email" component={ User } />
       <Route exact path="/user/new" component={ CreateUser } />
 
 
