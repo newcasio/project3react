@@ -12,7 +12,6 @@ class ResultsList extends Component{
   }
 
   AddThisToReadingList(book){
-    console.log("clicked");
     this.setState({
       currentBookId: book       //send entire book object to state
     })
@@ -24,7 +23,7 @@ class ResultsList extends Component{
       currentUser : this.state.currentUserEmail,   //include this so node can find user to update
       groupedInfo : {
         name: book.volumeInfo.title,
-        author: book.volumeInfo.author,
+        author: book.volumeInfo.authors,
         id: book.id,
         image: book.volumeInfo.imageLinks.smallThumbnail,
         description: book.volumeInfo.description,
@@ -40,8 +39,6 @@ class ResultsList extends Component{
     .catch(err=>{
       console.warn(`Post no good: ${err}`);
     })
-
-    let path = `#/user/${this.state.currentUserEmail}`;
   }
 
   render(){

@@ -9,7 +9,7 @@ class User extends Component{
   constructor(){
     super();
     this.state={
-      userDetails: {}
+      userDetails: {},
     }
   };
 
@@ -25,17 +25,37 @@ class User extends Component{
     })
   }
 
+  RemoveBook(book){
+    // console.log(book);      //gets book clicked on
+    const url = 'http://127.0.0.1:3000/users/profile/brad@ga.co/bookdel';
+
+    let dataToSend= {
+      bookToDelete: book,
+      user: this.state.userDetails.email
+    };
+
+    axios.post(`${url}`, {dataToSend})
+    .then(res=>{
+      console.log(res.data);
+    })
+    .catch(err=>{
+      console.warn(`Post (delete book) to user no good: ${err}`);
+    })
+
+  }
+
   render(){
     // console.log(this.state.userDetails.books);
     return(
       <div>
-        <a href={this.props.history}>Back</a>
+        <a href='./?#/'>Back</a>
         <Heading/>
         <p>Email: {this.state.userDetails.email}
         </p>
         <h4>Your reading list</h4>
         <ul>
-          <ListItems list={this.state.userDetails}/>
+          <ListItems list={this.state.userDetails}
+            RemoveBook={this.RemoveBook.bind(this)}/>
         </ul>
       </div>
     )
@@ -55,13 +75,11 @@ const ListItems = (props)=>{
           <p>Author: {book.author}</p>
           <p>Description: {book.description}</p>
           <img src={book.image}/>
-          <button>Remove from reading list</button>
+          <button onClick={()=>props.RemoveBook(book)}>Remove from reading list</button>
         </li>
     })
   )
 }
-
-
 
 
 
