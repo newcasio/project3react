@@ -14,7 +14,7 @@ const Routes = (
       <Route exact path="/" component={ Home } />
       <Route exact path="/book/:id" component={ Book } />
       <Route exact path="/user/:email" component={ User } />
-      <Route exact path="/user/new" component={ CreateUser } />
+      <Route exact path="/user" component={ CreateUser } />
 
 
     </div>

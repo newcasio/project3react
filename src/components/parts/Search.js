@@ -36,10 +36,9 @@ class Search extends Component{
   render(){
     return(
       <div>
-        <h4>Book Search</h4>
-        <h2>Search by Title</h2>
+        <h2>Book Search</h2>
         <form onSubmit={()=>this.getBookResults()}>  {/*auto call getBookResults on search button click*/}
-          <input type="text" onChange={(input)=>this.handleChange(input)} />   {/*input field, when typing calls handleChange method and changes state*/}
+          <input type="text" placeholder="Search here" onChange={(input)=>this.handleChange(input)} />   {/*input field, when typing calls handleChange method and changes state*/}
           <button>Search</button>
         </form>
 
