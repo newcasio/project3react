@@ -29,6 +29,7 @@ class User extends Component{
     // console.log(this.state.userDetails.books);
     return(
       <div>
+        <a href={this.props.history}>Back</a>
         <Heading/>
         <p>Email: {this.state.userDetails.email}
         </p>
@@ -54,6 +55,7 @@ const ListItems = (props)=>{
           <p>Author: {book.author}</p>
           <p>Description: {book.description}</p>
           <img src={book.image}/>
+          <button>Remove from reading list</button>
         </li>
     })
   )

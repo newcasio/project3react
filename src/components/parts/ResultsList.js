@@ -12,6 +12,7 @@ class ResultsList extends Component{
   }
 
   AddThisToReadingList(book){
+    console.log("clicked");
     this.setState({
       currentBookId: book       //send entire book object to state
     })
@@ -34,15 +35,13 @@ class ResultsList extends Component{
     axios.post(url, {dataToSend})
     .then(res=>{
       console.log(res.data);
+      this.props.history.push(`/user/${this.state.currentUserEmail}`)
     })
     .catch(err=>{
       console.warn(`Post no good: ${err}`);
     })
 
     let path = `#/user/${this.state.currentUserEmail}`;
-    // console.log(path);
-    console.log(this.props.history);
-    // this.props.history.push(path);
   }
 
   render(){
@@ -64,19 +63,35 @@ const ListedBooks= props =>{
     return (<div>Loading....</div>)
   }
 
-  return(
-    props.data.map( (book, index)=>{
-      return <li key={index}>
-        <h3>{book.volumeInfo.title}</h3>
-        <div>Author: {book.volumeInfo.authors.map((element, index)=> <p key={index}>{element}</p>)}</div>
-        <p>Description: {book.volumeInfo.description}</p>
-        <p>Release Date: {book.volumeInfo.publishedDate}</p>
-        <img src={book.volumeInfo.imageLinks.smallThumbnail}/>
-        <br/>
-        <button onClick={()=>props.AddThisToReadingList(book)}>Add to my reading list</button>
-      </li>
-    })
-  )
+  return props.data.map( (book, index)=>{
+    //conditional to check if each book in return listed contains all keys (must have keys, values can be empty)
+    let author;
+    if( 'authors' in book.volumeInfo ){
+      author = <div>Author: {book.volumeInfo.authors.map((element, index)=> <p key={index}>{element}</p>)}</div>;
+    } else {
+      author = <div>(no author)</div>
+    }
+
+    let imageLink;
+    if( 'imageLinks' in book.volumeInfo ){
+      imageLink =  <img src={book.volumeInfo.imageLinks.smallThumbnail}/>
+    } else {
+      imageLink = <div>(no image)</div>
+    }
+
+
+
+    return <li key={index}>
+      <h3>{book.volumeInfo.title}</h3>
+      { author }
+      <p>Description: {book.volumeInfo.description}</p>
+      <p>Release Date: {book.volumeInfo.publishedDate}</p>
+      { imageLink}
+      <br/>
+      <button onClick={()=>props.AddThisToReadingList(book)}>Add to my reading list</button>
+    </li>
+  });
+
 }
 
 export default ResultsList;

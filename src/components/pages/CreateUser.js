@@ -42,6 +42,7 @@ class CreateUser extends Component{
   render(){
     return(
       <div>
+        <a href="/">Back to search</a>
         <h3>Register here</h3>
         <form onSubmit={(e)=>this.SubmitNewUser(e)}>  {/*auto call getBookResults on search button click*/}
           <label>Email</label>

@@ -23,7 +23,7 @@ class Search extends Component{
 
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchString}&key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI`)
     .then(response=>{
-      console.log(response.data);
+      console.log('response', response.data);
       this.setState({
         bookResults: response.data.items
       })
@@ -42,7 +42,7 @@ class Search extends Component{
           <button>Search</button>
         </form>
 
-        <ResultsList listFromGoogle={this.state.bookResults} />
+        <ResultsList listFromGoogle={this.state.bookResults} history={this.props.history} />   {/*pass this down to Search.js then to ResultsList.js so can use this.props.history.push to redirect in ResultsList.js */}
 
       </div>
     )
