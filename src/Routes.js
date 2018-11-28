@@ -12,10 +12,8 @@ const Routes = (
     <div>
       {/*Map a URL route to a component, which will be rendered when that url is request*/}
       <Route exact path="/" component={ Home } />
-      <Route exact path="/book/:id" component={ Book } />
       <Route exact path="/user/:email" component={ User } />
       <Route exact path="/user" component={ CreateUser } />
-
 
     </div>
   </Router>

@@ -19,13 +19,14 @@ class Search extends Component{
     });
   }
 
-  getBookResults(){
-
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchString}&key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI`)
-    .then(response=>{
-      console.log('response', response.data);
+  getBookResults(e){
+    e.preventDefault();     //stop page reload on on submitting form
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.searchString}&key=AIzaSyBfdeYzd23jyR3fKx0oRtdlqCDK-NEzwcI`)
+    .then( res => res.json() )
+    .then( response => {
+      console.log('response', response);
       this.setState({
-        bookResults: response.data.items
+        bookResults: response.items
       })
     })
     .catch(err=>{
@@ -37,12 +38,12 @@ class Search extends Component{
     return(
       <div>
         <h2>Book Search</h2>
-        <form onSubmit={()=>this.getBookResults()}>  {/*auto call getBookResults on search button click*/}
+        <form onSubmit={(e)=>this.getBookResults(e)}>  {/*auto call getBookResults on search button click*/}
           <input type="text" placeholder="Search here" onChange={(input)=>this.handleChange(input)} />   {/*input field, when typing calls handleChange method and changes state*/}
           <button>Search</button>
         </form>
 
-        <ResultsList listFromGoogle={this.state.bookResults} history={this.props.history} />   {/*pass this down to Search.js then to ResultsList.js so can use this.props.history.push to redirect in ResultsList.js */}
+        <ResultsList listFromGoogle={this.state.bookResults} history={this.props.history} isLoggedIn={this.props.isLoggedIn}/>   {/*pass this down to Search.js then to ResultsList.js so can use this.props.history.push to redirect in ResultsList.js */}
 
       </div>
     )

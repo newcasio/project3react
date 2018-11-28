@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import SignInLink from './SignInLink'
+
 class ResultsList extends Component{
 
   constructor(){
@@ -31,7 +33,7 @@ class ResultsList extends Component{
       }
     };
     //post data to the backend to update individual user
-    axios.post(url, {dataToSend})
+    axios.post(url, {dataToSend}) 
     .then(res=>{
       console.log(res.data);
       this.props.history.push(`/user/${this.state.currentUserEmail}`)
@@ -41,12 +43,16 @@ class ResultsList extends Component{
     })
   }
 
+
   render(){
     return(
       <div>
         <ul>
-          <ListedBooks data ={this.props.listFromGoogle}
-          AddThisToReadingList={this.AddThisToReadingList.bind(this)}/>
+          <ListedBooks
+            data ={this.props.listFromGoogle}
+            AddThisToReadingList={this.AddThisToReadingList.bind(this)}
+            isLoggedIn={this.props.isLoggedIn}
+          />
         </ul>
       </div>
     )
@@ -76,8 +82,6 @@ const ListedBooks= props =>{
       imageLink = <div>(no image)</div>
     }
 
-
-
     return <li key={index}>
       <h3>{book.volumeInfo.title}</h3>
       { author }
@@ -85,7 +89,13 @@ const ListedBooks= props =>{
       <p>Release Date: {book.volumeInfo.publishedDate}</p>
       { imageLink}
       <br/>
-      <button onClick={()=>props.AddThisToReadingList(book)}>Add to my reading list</button>
+      {
+        props.isLoggedIn
+        ?
+        <button onClick={()=>props.AddThisToReadingList(book)}>Add to my reading list</button>
+        :
+        <button>Sign in to add to your reading list  NOT WORKING</button>
+      }
     </li>
   });
 
