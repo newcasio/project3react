@@ -26,7 +26,7 @@ class SignInLink extends Component{
     .then(res=>{
       console.log(res.data);
       //set returned token into the header of request
-      axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+      axios.defaults.headers.common['authorization'] = `Bearer ${res.data.token}`;
       //store token to local storage
       if ('localStorage' in window){
             window.localStorage.setItem('authToken', res.data.token);
@@ -45,6 +45,7 @@ class SignInLink extends Component{
   render(){
     return(
         <div>
+          <h4>Log in</h4>
           <form onSubmit={(e)=>this.LogInUser(e)}>
             <label>Email</label>
             <input type="text" name='email' onChange={(input)=>this.handleChange(input)} />

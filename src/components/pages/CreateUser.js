@@ -5,8 +5,8 @@ import axios from 'axios';
 
 class CreateUser extends Component{
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state ={
       email: '',
       password: '',
@@ -19,34 +19,27 @@ class CreateUser extends Component{
 
     e.preventDefault();
 
+    // this.props.changeLogStatus(true);
+
     const url = 'http://127.0.0.1:3000/users';
 
-    //create an object of data to be sent
-    // const dataToSend = {
-    //   email: this.state.email,
-    //   password: this.state.password
-    // }
     axios.post(`${url}/create`, { email: this.state.email, password: this.state.password })
     .then(res =>{
-      console.log(res.data);
       this.loginFromToken(res.data.token);
     })
-    // this.props.changeLogStatus(true);
-    // this.props.history.goBack();
+    this.setState({
+      isLoggedIn: true
+    });
+    setTimeout(this.props.history.goBack(),3000);
+
   };
 
-  loginFromToken(e){
+  loginFromToken(tokenFromNode){
     if ('localStorage' in window){
-      console.log('localStorage OK');
-      const token = window.localStorage.setItem('authToken',e);
-      console.log(token);
+      const token = window.localStorage.setItem('authToken',tokenFromNode);
       if (token){
-        console.log('token OK');
         // axios.defaults.headers.common['Authorization'] = `${token}`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        this.setState({
-          isLoggedIn: true
-        });
       }
     } // localStorage available
   }

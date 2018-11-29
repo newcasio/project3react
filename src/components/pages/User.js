@@ -14,7 +14,7 @@ class User extends Component{
   };
 
   componentDidMount(){
-    const url = 'http://127.0.0.1:3000/users/profile/brad@ga.co';
+    const url = `http://127.0.0.1:3000/users/profile/${this.state.userDetails.email}`;
 
     axios.get(`${url}`)
     .then(res=>{
@@ -27,7 +27,7 @@ class User extends Component{
 
   RemoveBook(book){
     // console.log(book);      //gets book clicked on
-    const url = 'http://127.0.0.1:3000/users/profile/brad@ga.co/bookdel';
+    const url = `http://127.0.0.1:3000/users/profile/${this.state.userDetails.email}/bookdel`;
 
     let dataToSend= {
       bookToDelete: book,
@@ -37,6 +37,8 @@ class User extends Component{
     axios.post(`${url}`, {dataToSend})
     .then(res=>{
       console.log(res.data);
+      // this.props.history.push(`/user/${this.state.userDetails.email}`)
+      window.location.reload();
     })
     .catch(err=>{
       console.warn(`Post (delete book) to user no good: ${err}`);

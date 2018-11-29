@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import scrollToComponent from 'react-scroll-to-component';
 
 import SignInLink from './SignInLink'
 
@@ -12,6 +13,10 @@ class ResultsList extends Component{
       currentBookId: {}   //this is set by the AddThisToReadingList method
     }
   }
+
+  // function topFunction(){
+  //   document.documentElement.scrollTop = 0;
+  // }
 
   AddThisToReadingList(book){
     this.setState({
@@ -33,7 +38,7 @@ class ResultsList extends Component{
       }
     };
     //post data to the backend to update individual user
-    axios.post(url, {dataToSend}) 
+    axios.post(url, {dataToSend})
     .then(res=>{
       console.log(res.data);
       this.props.history.push(`/user/${this.state.currentUserEmail}`)
@@ -62,6 +67,7 @@ class ResultsList extends Component{
 
 //print the list delivered by props from search.js
 const ListedBooks= props =>{
+
   if (props.data === undefined){
     return (<div>Loading....</div>)
   }
@@ -82,6 +88,8 @@ const ListedBooks= props =>{
       imageLink = <div>(no image)</div>
     }
 
+
+
     return <li key={index}>
       <h3>{book.volumeInfo.title}</h3>
       { author }
@@ -94,7 +102,8 @@ const ListedBooks= props =>{
         ?
         <button onClick={()=>props.AddThisToReadingList(book)}>Add to my reading list</button>
         :
-        <button>Sign in to add to your reading list  NOT WORKING</button>
+        // <button onClick={this.topFunction()}>Sign in to add to your reading list</button>
+        <button>Sign in to add to your reading list</button>
       }
     </li>
   });
