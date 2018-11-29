@@ -4,7 +4,12 @@ class Heading extends Component{
 
   render(){
     return(
-      <h1>Booker</h1>
+      <div>
+        <hr/>
+        <h1 className="booker">Booker</h1>
+        <h4 className="myReads">My reads</h4>
+        <hr/>
+      </div>
     )
   }
 

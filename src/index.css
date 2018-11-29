@@ -1,14 +1,37 @@
 body {
-  margin: 0;
+  margin: 0 30px;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: 'https://cdn.hipwallpaper.com/i/9/62/o1HZ26.jpg';
+  background-color: 0xdcc66a;
+  background-color: orange;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.booker{
+  font-family: cursive;
+  font-size: 65px;
+  text-align: center;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+}
+
+.myReads{
+  font-family: cursive;
+  font-size: 38px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.searchBar{
+  margin: auto;
+  position: absolute;
 }
