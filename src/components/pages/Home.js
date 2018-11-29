@@ -19,8 +19,7 @@ class Home extends Component{
 
   componentDidMount(){
     this.loginFromToken();
-    // axios.get('http://127.0.0.1:3000/users/profile/watever')
-    // .then(console.log);
+
   }
 
   loginFromToken(){

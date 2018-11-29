@@ -9,7 +9,7 @@ class ResultsList extends Component{
   constructor(){
     super();
     this.state={
-      currentUserEmail: '',
+      currentUserEmail: 'brad@ga.co',
       currentBookId: {}   //this is set by the AddThisToReadingList method
     }
   }
@@ -23,12 +23,12 @@ class ResultsList extends Component{
       currentBookId: book       //send entire book object to state
     })
 
-    // const url = `http://127.0.0.1:3000/users/profile/:email/update`;
-    const url = `http://127.0.0.1:3000/users/profile/update`;
+    // const url = `http://127.0.0.1:3000/users/profile/update`;
+    const url = `http://127.0.0.1:3000/users/profile/${this.state.currentUserEmail}/update`;
 
     //create an object of data to be sent
     const dataToSend = {
-      // currentUser : this.state.currentUserEmail,   //include this so node can find user to update
+      currentUser : this.state.currentUserEmail,   //include this so node can find user to update
       groupedInfo : {
         name: book.volumeInfo.title,
         author: book.volumeInfo.authors,
@@ -42,7 +42,7 @@ class ResultsList extends Component{
     axios.post(url, {dataToSend})
     .then(res=>{
       console.log(res.data);
-      this.props.history.push(`/userShow`)
+      this.props.history.push(`/user/${this.state.currentUserEmail}`)
     })
     .catch(err=>{
       console.warn(`Post no good: ${err}`);
