@@ -60,7 +60,8 @@ class UserShow extends Component{
     .then(res=>{
       console.log(res.data);
       // this.props.history.push(`/user/${this.state.userDetails.email}`)
-      window.location.reload();
+      // window.location.reload();
+      this.componentDidMount();
     })
     .catch(err=>{
       console.warn(`Post (delete book) to user no good: ${err}`);
