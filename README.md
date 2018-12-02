@@ -9,6 +9,13 @@ Welcome to Booker, where you can search the Google Books directory and add selec
 ### Link
 https://booker-react.herokuapp.com
 
+
+### Features
+
+* Search for books to add to your reading list.
+* Create a user to save books for future reference.
+* Remove books from your reading list once done.
+
 ![homescreen](/images/Home.png)
 ![searchResults](/images/Search.png)
 ![readingList](/images/ReadingList.png)
