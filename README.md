@@ -35,7 +35,7 @@ Reading list
 
 ### Behind the scenes
 
-This is my General Assembly Final project.  I decided to use ReactJS for the front end which in class we spend some time on, but which I was not confident using, and NodeJS for the backend which we only briefly touched on in the week leading up to the final project.  I also got a little exposure to MongoDB as well.  In hindsight, I think it was a good exercise to not only learn more about React and Node, but also how I will approach learning a new language on the run.
+This is my General Assembly web development immersive (WDI) final project.  I decided to use ReactJS for the front end which in class we spend some time on, but which I was not confident using, and NodeJS for the backend which we only briefly touched on in the week leading up to the final project.  I also got a little exposure to MongoDB as well.  In hindsight, I think it was a good exercise to not only learn more about React and Node, but also how I will approach learning a new language on the run.
 
 
 #### Issues
