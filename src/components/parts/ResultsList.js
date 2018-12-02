@@ -90,7 +90,6 @@ const ListedBooks= props =>{
     }
 
 
-
     return <li key={index}>
       <h3>{book.volumeInfo.title}</h3>
       { author }
@@ -104,7 +103,7 @@ const ListedBooks= props =>{
         <button onClick={()=>props.AddThisToReadingList(book)}>Add to my reading list</button>
         :
         // <button onClick={this.topFunction()}>Sign in to add to your reading list</button>
-        <button>Sign in to add to your reading list</button>
+        <button onClick={()=>document.documentElement.scrollTop=0} id="myBtn" title="Go to top">Sign in to add to your reading list</button>
       }
     </li>
   });

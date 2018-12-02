@@ -49,7 +49,6 @@ class Home extends Component{
 
     let nav;
     if( this.state.isLoggedIn ){
-      // nav = <SignOutLink/>;
       nav = (
         <div>
           <SignOut changeLogStatus={(newValue)=>this.onChangeLogStatus(newValue)} logStatus={this.state.isLoggedIn}/>

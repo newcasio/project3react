@@ -15,9 +15,7 @@ class UserShow extends Component{
 
   componentDidMount(){
     const url = `http://127.0.0.1:3000/users/profile`;
-    // const url = `http://127.0.0.1:3000/users/profile/${this.state.userDetails.email}`;
-    this.loginFromToken();
-
+    this.loginFromToken();    //get token from localStorage and set header
     axios.get(`${url}`)
     // axios.get(`${url}`)
     .then(res=>{
@@ -36,31 +34,22 @@ class UserShow extends Component{
       console.log(token);
       if (token){
         console.log('token OK');
-        // axios.defaults.headers.common['Authorization'] = `${token}`;
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        this.setState({
-          isLoggedIn: true
-        });
       }
     } // localStorage available
   }
 
 
   RemoveBook(book){
-    // console.log(book);      //gets book clicked on
     const url = `http://127.0.0.1:3000/users/profile/bookdel`;
-    // const url = `http://127.0.0.1:3000/users/profile/${this.state.userDetails.email}/bookdel`;
 
     let dataToSend= {
-      bookToDelete: book,
+      bookToDelete: book,     //book that was clicked on
       user: this.state.userDetails.email
     };
 
     axios.post(url, {dataToSend})
     .then(res=>{
-      console.log(res.data);
-      // this.props.history.push(`/user/${this.state.userDetails.email}`)
-      // window.location.reload();
       this.componentDidMount();
     })
     .catch(err=>{
@@ -70,7 +59,6 @@ class UserShow extends Component{
   }
 
   render(){
-    // console.log(this.state.userDetails.books);
     return(
       <div>
         <a href='./#/'>Back</a>

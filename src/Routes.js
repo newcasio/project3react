@@ -2,7 +2,6 @@ import React from 'react';
 import {HashRouter as Router, Route} from 'react-router-dom';
 
 import Home from "./components/pages/Home";
-import Book from "./components/pages/Book";
 import UserShow from "./components/pages/UserShow";
 import CreateUser from "./components/pages/CreateUser";
 
