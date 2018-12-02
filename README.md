@@ -16,8 +16,13 @@ https://booker-react.herokuapp.com
 * Create a user to save books for future reference.
 * Remove books from your reading list once done.
 
+Login/SignUp
 ![homescreen](/images/Home.png)
+
+Search results
 ![searchResults](/images/Search.png)
+
+Reading list
 ![readingList](/images/ReadingList.png)
 
 ### Tech Used
