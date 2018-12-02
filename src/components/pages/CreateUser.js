@@ -21,7 +21,7 @@ class CreateUser extends Component{
 
     // this.props.changeLogStatus(true);
 
-    const url = 'http://127.0.0.1:3000/users';
+    const url = 'https://booker-node.herokuapp.com/users';
 
     axios.post(`${url}/create`, { email: this.state.email, password: this.state.password })
     .then(res =>{

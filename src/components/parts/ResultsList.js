@@ -23,8 +23,8 @@ class ResultsList extends Component{
       currentBookId: book       //send entire book object to state
     })
 
-    // const url = `http://127.0.0.1:3000/users/profile/:email/update`;
-    const url = `http://127.0.0.1:3000/users/profile/update`;
+    const url = `https://booker-node.herokuapp.com/users/profile/update`;
+    // const url = `http://127.0.0.1:3000/users/profile/update`;
 
     //create an object of data to be sent
     const dataToSend = {

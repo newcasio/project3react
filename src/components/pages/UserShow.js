@@ -14,7 +14,7 @@ class UserShow extends Component{
   };
 
   componentDidMount(){
-    const url = `http://127.0.0.1:3000/users/profile`;
+    const url = `https://booker-node.herokuapp.com/users/profile`;
     this.loginFromToken();    //get token from localStorage and set header
     axios.get(`${url}`)
     // axios.get(`${url}`)
@@ -41,7 +41,7 @@ class UserShow extends Component{
 
 
   RemoveBook(book){
-    const url = `http://127.0.0.1:3000/users/profile/bookdel`;
+    const url = `https://booker-node.herokuapp.com/users/profile/bookdel`;
 
     let dataToSend= {
       bookToDelete: book,     //book that was clicked on
