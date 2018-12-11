@@ -93,7 +93,7 @@ const ListedBooks= props =>{
     return <li key={index}>
       <h3>{book.volumeInfo.title}</h3>
       { author }
-      <p>Description: {book.volumeInfo.description}</p>
+      <p class="searchResultsDescription">Description: {book.volumeInfo.description}</p>
       <p>Release Date: {book.volumeInfo.publishedDate}</p>
       { imageLink}
       <br/>

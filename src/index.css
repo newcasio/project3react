@@ -52,3 +52,7 @@ code {
 .readingList{
   margin-bottom: 80px;
 }
+
+.searchResultsDescription{
+  line-height: 2;
+}
