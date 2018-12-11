@@ -13,6 +13,7 @@ class UserShow extends Component{
     }
   };
 
+  // get logged in user details
   componentDidMount(){
     const url = `https://booker-node.herokuapp.com/users/profile`;
     this.loginFromToken();    //get token from localStorage and set header
@@ -26,7 +27,7 @@ class UserShow extends Component{
     })
   }
 
-
+  //check local storage for log in token
   loginFromToken(){
     if ('localStorage' in window){
       console.log('localStorage OK');
@@ -83,12 +84,12 @@ const ListItems = (props)=>{
 
   return(
     props.list.map((book, index) => {
-        return <li key={index}>
-          <p>Title: {book.name}</p>
-          <p>Author: {book.author}</p>
-          <p>Description: {book.description}</p>
-          <img src={book.image}/>
-          <button onClick={()=>props.RemoveBook(book)}>Remove from reading list</button>
+        return <li class="readingList" key={index}>
+          <p><strong>Title:</strong> {book.name}</p>
+          <p><strong>Author:</strong> {book.author}</p>
+          <p class="bookDescription"><strong>Description:</strong> {book.description}</p>
+          <img src={book.image}/><br/>
+          <button class="topButtons" onClick={()=>props.RemoveBook(book)}>Remove from reading list</button>
         </li>
     })
   )

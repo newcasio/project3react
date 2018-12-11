@@ -9,7 +9,7 @@ class ShowPageLink extends Component{
 
   render(){
     return(
-      <button onClick={()=>this.directPage()}>My reading list</button>
+      <button class="topButtons" onClick={()=>this.directPage()}>My reading list</button>
     )
   }
 }

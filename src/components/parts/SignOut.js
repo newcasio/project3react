@@ -19,7 +19,7 @@ class SignOut extends Component{
 
   render(){
     return(
-      <button onClick={()=>this.LogOut()}>Sign Out</button>
+      <button class="topButtons" onClick={()=>this.LogOut()}>Sign Out</button>
     )
   }
 
